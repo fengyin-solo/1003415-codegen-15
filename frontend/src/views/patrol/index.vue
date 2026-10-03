@@ -11,6 +11,8 @@
       </div>
     </header>
 
+    <RouteAdjustBanner module="patrol" :tick="reloadTick" />
+
     <div class="stat-row">
       <article v-for="item in stats" :key="item.label" class="stat-card">
         <span class="stat-label">{{ item.label }}</span>
@@ -80,6 +82,7 @@ import {
   runAction as applyAction,
 } from '@/api/local-service'
 import type { EntryRow } from '@/data/types'
+import RouteAdjustBanner from '@/components/RouteAdjustBanner.vue'
 
 const meta = moduleMeta('patrol')
 const columns = ["任务编号", "巡护区域", "巡护路线", "巡护员", "巡护日期", "巡护时段", "发现火情数", "任务状态"]
@@ -90,6 +93,7 @@ const stats = [{"label": "今日任务数", "value": 0}, {"label": "已完成任
 const rows = ref<EntryRow[]>([])
 const total = ref(0)
 const errorMessage = ref('')
+const reloadTick = ref(0)
 const filters = ref<Record<string, string>>({})
 const filterFields = columns.slice(0, 3)
 const statusSummary = computed(() =>
@@ -124,6 +128,7 @@ function runAction(action: string, row: EntryRow) {
 
 function reload() {
   errorMessage.value = ''
+  reloadTick.value += 1
   try {
     const payload = listEntries(meta.key, filters.value)
     rows.value = payload.items

@@ -15,6 +15,7 @@ const Checkpoint = () => import('@/views/checkpoint/index.vue')
 const Duty = () => import('@/views/duty/index.vue')
 const Supply = () => import('@/views/supply/index.vue')
 const Forestroad = () => import('@/views/forestroad/index.vue')
+const TrafficRule = () => import('@/views/trafficrule/index.vue')
 const Firebelt = () => import('@/views/firebelt/index.vue')
 const Drill = () => import('@/views/drill/index.vue')
 const Burnpermit = () => import('@/views/burnpermit/index.vue')
@@ -38,6 +39,7 @@ const router = createRouter({
     { path: '/duty', name: 'duty', component: Duty },
     { path: '/supply', name: 'supply', component: Supply },
     { path: '/forestroad', name: 'forestroad', component: Forestroad },
+    { path: '/traffic-rule', name: 'traffic-rule', component: TrafficRule },
     { path: '/firebelt', name: 'firebelt', component: Firebelt },
     { path: '/drill', name: 'drill', component: Drill },
     { path: '/burnpermit', name: 'burnpermit', component: Burnpermit },
