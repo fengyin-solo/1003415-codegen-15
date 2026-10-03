@@ -35,3 +35,36 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .error-text { color: #b42318; }
 .status-legend { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 10px; font-size: 12px; color: var(--muted); }
 .legend-item { background: #eef2f7; border-radius: 999px; padding: 2px 10px; }
+
+/* 通行规则台 */
+.rule-panel { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 12px; }
+.rule-panel h3, .ledger-panel h3 { font-size: 14px; margin: 4px 0 8px; }
+.rule-list { margin: 0; padding-left: 18px; display: flex; flex-direction: column; gap: 4px; font-size: 13px; }
+.rule-criteria { color: var(--muted); margin: 0 8px; }
+.rule-target { color: #b42318; font-size: 12px; }
+.rule-manual strong { color: #b42318; }
+.rule-note { font-size: 12px; color: var(--muted); margin: 8px 0 2px; }
+.version-tag { margin-left: 6px; font-size: 11px; color: var(--muted); background: #eef2f7; border-radius: 4px; padding: 0 5px; }
+.backfill-tag { margin-left: 6px; font-size: 11px; color: #b54708; background: #fffaeb; border: 1px solid #fedf89; border-radius: 4px; padding: 0 5px; }
+.closure-type { display: inline-block; margin-left: 6px; font-size: 11px; background: #fee4e2; color: #b42318; border-radius: 4px; padding: 0 5px; }
+.status-pill { display: inline-block; border-radius: 999px; padding: 2px 10px; font-size: 12px; }
+.pill-open { background: #e7f8ee; color: #067647; }
+.pill-locked { background: #fffaeb; color: #b54708; }
+.pill-closed { background: #fee4e2; color: #b42318; }
+.detail-link { margin-left: 8px; font-size: 12px; }
+.winner-text { color: var(--muted); }
+.road-table tr.row-closed { background: #fff6f5; }
+.road-table tr.row-locked { background: #fffdf5; }
+.detail-row td { background: #f8fafc; padding: 8px 12px; }
+.hit-table { width: 100%; border-collapse: collapse; }
+.hit-table th, .hit-table td { border: 1px solid var(--border); padding: 5px 8px; font-size: 12px; text-align: left; }
+.hit-table tr.hit-on td:first-child { font-weight: 600; }
+.hit-table tr.hit-winner { background: #eef4ff; }
+.criteria-cell { color: var(--muted); }
+.ledger-panel { margin-top: 16px; }
+.ledger-item { display: block; font-size: 12px; margin-bottom: 2px; }
+.linkage-tag { font-size: 12px; color: #b54708; }
+.muted-cell { color: var(--muted); }
+.ok-text { color: #067647; }
+.link.danger { color: #b42318; }
+.filter-item select { padding: 5px 8px; border: 1px solid var(--border); border-radius: 6px; font-size: 13px; }

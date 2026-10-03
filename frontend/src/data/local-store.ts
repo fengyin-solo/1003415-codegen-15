@@ -1,8 +1,9 @@
-import { SEED_ROWS } from './seed'
+import { SEED_ROWS, SEED_VERSION } from './seed'
 import type { EntryRow } from './types'
 
 // 本地持久化：数据放在 localStorage 里，刷新、关掉再打开都还在。
-const STORAGE_KEY = 'forest-fire-patrol:entries'
+// 版本号跟着示例数据走：seed 结构调整后升版本，旧数据作废并重新播种。
+const STORAGE_KEY = `forest-fire-patrol:entries:v${SEED_VERSION}`
 
 function clone<T>(value: T): T {
   return JSON.parse(JSON.stringify(value)) as T
@@ -46,6 +47,12 @@ export function saveRows(key: string, rows: EntryRow[]): void {
   if (typeof window !== 'undefined' && window.localStorage) {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(next))
   }
+}
+
+// 丢弃内存缓存，强制下次从 localStorage 重读：多终端（多标签页）并发时
+// 用它拿到别的终端刚刚落库的最新版本。
+export function invalidateCache(): void {
+  cache = null
 }
 
 export function resetRows(key: string): EntryRow[] {

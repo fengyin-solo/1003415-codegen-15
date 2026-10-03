@@ -18,6 +18,8 @@ export type ModuleMeta = {
   actions: string[]
   actionTargets: Record<string, string>
   metrics: string[]
+  // 有向状态机：只列出允许的流转方向，缺省按 actionTargets 直通。
+  legalTransitions?: Record<string, string[]>
 }
 
 export type PageResult = {

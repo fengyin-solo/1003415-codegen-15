@@ -28,6 +28,13 @@ export function listEntries(key: string, filters: Record<string, string> = {}): 
   return { items: matched, total: matched.length, page: 1, size: matched.length }
 }
 
+export function isLegalTransition(meta: ModuleMeta, from: string, to: string): boolean {
+  if (from === to) return false
+  const graph = meta.legalTransitions
+  if (!graph) return true
+  return (graph[from] ?? []).includes(to)
+}
+
 export function runAction(key: string, id: number, action: string): ActionResult {
   const meta = moduleMeta(key)
   const target = meta.actionTargets[action]
@@ -42,6 +49,9 @@ export function runAction(key: string, id: number, action: string): ActionResult
   const current = String(rows[index].status)
   if (current === target) {
     return { ok: false, message: `${meta.entity}已经是「${target}」，不用重复操作` }
+  }
+  if (!isLegalTransition(meta, current, target)) {
+    return { ok: false, message: `「${current} → ${target}」不是合法的状态切换方向，该动作已被拦截` }
   }
   const lastStatus = meta.statuses[meta.statuses.length - 1]
   const updated: EntryRow = {
